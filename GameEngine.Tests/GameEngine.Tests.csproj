@@ -4,6 +4,11 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="SourceCode\**" />
+    <EmbeddedResource Remove="SourceCode\**" />
+    <None Remove="SourceCode\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
@@ -13,25 +18,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SourceCode\02\demos\after\01AddingTestProject\Game.sln" />
-    <None Include="SourceCode\02\demos\after\01AddingTestProject\GameEngine.Tests\GameEngine.Tests.csproj" />
-    <None Include="SourceCode\02\demos\after\01AddingTestProject\GameEngine\GameEngine.csproj" />
-    <None Include="SourceCode\02\demos\after\02StartingTest\Game.sln" />
-    <None Include="SourceCode\02\demos\after\02StartingTest\GameEngine.Tests\GameEngine.Tests.csproj" />
-    <None Include="SourceCode\02\demos\after\02StartingTest\GameEngine\GameEngine.csproj" />
-    <None Include="SourceCode\02\demos\before\01AddingTestProject\Game.sln" />
-    <None Include="SourceCode\02\demos\before\01AddingTestProject\GameEngine.Tests\GameEngine.Tests.csproj" />
-    <None Include="SourceCode\02\demos\before\01AddingTestProject\GameEngine\GameEngine.csproj" />
-    <None Include="SourceCode\02\demos\before\02StartingTest\Game.sln" />
-    <None Include="SourceCode\02\demos\before\02StartingTest\GameEngine.Tests\GameEngine.Tests.csproj" />
-    <None Include="SourceCode\02\demos\before\02StartingTest\GameEngine\GameEngine.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SourceCode\02\demos\after\01AddingTestProject\.vs\Game\v15\" />
-    <Folder Include="SourceCode\02\demos\after\02StartingTest\.vs\Game\v15\" />
-    <Folder Include="SourceCode\02\demos\before\01AddingTestProject\.vs\Game\v15\" />
-    <Folder Include="SourceCode\02\demos\before\02StartingTest\.vs\Game\v15\" />
   </ItemGroup>
 </Project>
