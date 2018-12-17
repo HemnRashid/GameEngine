@@ -3,11 +3,10 @@ using System;
 
 namespace GameEngine.Tests
 {
-    [Trait("Category","Enemy")]
+    [Trait("Category", "Enemy")]
     public class EnemyFactoryShould
     {
-        [Fact]
-        
+        [Fact]        
         public void CreateNormalEnemyByDefault()
         {
             EnemyFactory sut = new EnemyFactory();
@@ -17,7 +16,7 @@ namespace GameEngine.Tests
             Assert.IsType<NormalEnemy>(enemy);
         }
 
-        [Fact]
+        [Fact(Skip = "Don't need to run this")]
         public void CreateNormalEnemyByDefault_NotTypeExample()
         {
             EnemyFactory sut = new EnemyFactory();

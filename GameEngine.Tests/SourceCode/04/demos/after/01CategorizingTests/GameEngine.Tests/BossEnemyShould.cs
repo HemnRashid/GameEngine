@@ -2,11 +2,10 @@
 
 namespace GameEngine.Tests
 {
-    [Trait("Category","¨Boss")]
     public class BossEnemyShould
     {
         [Fact]
-        
+        [Trait("Category", "Boss")]
         public void HaveCorrectPower()
         {
             BossEnemy sut = new BossEnemy();
