@@ -5,109 +5,81 @@ namespace GameEngine.Tests
 {
     public class PlayerCharacterShould
     {
-        [Fact]  // indicated its a test.
-        public void BeInexperirencedWhenNew()
+        [Fact]
+        public void BeInexperiencedWhenNew()
         {
-            PlayerCharacter sut = new PlayerCharacter();  // Assing
-
-            // sut = system under test
-            sut.Sleep();  // Act
+            PlayerCharacter sut = new PlayerCharacter();
 
             Assert.True(sut.IsNoob);
-            //Assert.InRange(sut.Health, 101, 200);
-
         }
 
         [Fact]
         public void CalculateFullName()
         {
-            // Assing
-            PlayerCharacter sut = new PlayerCharacter();  
+            PlayerCharacter sut = new PlayerCharacter();
 
+            sut.FirstName = "Sarah";
+            sut.LastName = "Smith";
 
-            // Acting
-            sut.FirstName = "Adam";
-            sut.LastName = "Rashid";
-
-
-
-            // Asserting
-            Assert.Equal("Adam Rashid", sut.FullName);
-           
-
+            Assert.Equal("Sarah Smith", sut.FullName);
         }
 
         [Fact]
-        public void CalculateFullName_IgnoreCaseAssertExample()
+        public void HaveFullNameStartingWithFirstName()
         {
-            // Assing
             PlayerCharacter sut = new PlayerCharacter();
 
+            sut.FirstName = "Sarah";
+            sut.LastName = "Smith";
 
-            // Acting
-            sut.FirstName = "Adam";
-            sut.LastName = "RASHID";
-
-
-
-            // Asserting
-            Assert.Equal("Adam Rashid", sut.FullName,ignoreCase :  true);
-             
-
+            Assert.StartsWith("Sarah", sut.FullName);
         }
 
         [Fact]
         public void HaveFullNameEndingWithLastName()
         {
-            // Assing
             PlayerCharacter sut = new PlayerCharacter();
 
+            sut.LastName = "Smith";
 
-            // Acting
-            sut.FirstName = "Adam";
-            sut.LastName = "Rashid";
-
-
-
-            // Asserting
-            Assert.EndsWith("Rashid", sut.FullName);
-
-
+            Assert.EndsWith("Smith", sut.FullName);
         }
 
+        [Fact]
+        public void CalculateFullName_IgnoreCaseAssertExample()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            sut.FirstName = "SARAH";
+            sut.LastName = "SMITH";
+
+            Assert.Equal("Sarah Smith", sut.FullName, ignoreCase: true);
+        }
 
         [Fact]
         public void CalculateFullName_SubstringAssertExample()
         {
-            // Assing
             PlayerCharacter sut = new PlayerCharacter();
 
-            // Acting
-            sut.FirstName = "Adam";
-            sut.LastName = "Rashid";
+            sut.FirstName = "Sarah";
+            sut.LastName = "Smith";
 
-            // Asserting
-            Assert.Contains("Ad", sut.FullName);
+            Assert.Contains("ah Sm", sut.FullName);
         }
 
 
         [Fact]
         public void CalculateFullNameWithTitleCase()
         {
-
-            // Assing
             PlayerCharacter sut = new PlayerCharacter();
-            var regx = "[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]";
 
-            // Acting
-            sut.FirstName = "Adam";
-            sut.LastName = "Rashid";
+            sut.FirstName = "Sarah";
+            sut.LastName = "Smith";
 
-            // Asserting
-            Assert.Matches(regx, sut.FullName);
+            Assert.Matches("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", sut.FullName);
         }
 
-         [Fact]
+        [Fact]
         public void StartWithDefaultHealth()
         {
             PlayerCharacter sut = new PlayerCharacter();
@@ -141,6 +113,5 @@ namespace GameEngine.Tests
 
             Assert.Null(sut.Nickname);
         }
-
     }
 }
