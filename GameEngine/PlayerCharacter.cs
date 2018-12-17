@@ -84,10 +84,11 @@ namespace GameEngine
             {
                 "Long Bow",
                 "Short Bow",
-                "Short Sword",
+                "Short Sword"
+                //,"Staff Of Wonder"
             };
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
