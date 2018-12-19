@@ -4,7 +4,7 @@ using Xunit.Abstractions;
 
 namespace GameEngine.Tests
 {
-    public class PlayerCharacterShould: IDisposable
+    public class PlayerCharacterShould : IDisposable
     {
         private readonly PlayerCharacter _sut;
         private readonly ITestOutputHelper _output;
@@ -17,7 +17,7 @@ namespace GameEngine.Tests
             _output.WriteLine("Creating new PlayerCharacter");
             // create only one instanse of this obj for all the tests!.
             _sut = new PlayerCharacter();
-            
+
         }
 
         [Fact]  // indicated its a test.
@@ -226,8 +226,11 @@ namespace GameEngine.Tests
             Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
         }
 
-
-        //// This is for using data driven test
+        /// <summary>
+        /// This is for using data driven test by using inlineData for testing  diffrent values
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="expectedHealt"></param>
         //[Theory]
         //[InlineData(0,100)] // indata , 0 is damage, 100 is ExpectedHealth
         //[InlineData(1, 99)]
@@ -241,8 +244,11 @@ namespace GameEngine.Tests
         //    Assert.Equal(expectedHealt,_sut.Health);
         //}
 
+        /// <summary>
+        /// Using Internal Testdata
+        /// </summary>
         //[Theory]
-        //[MemberData(nameof(InternalHealthDamageTestData.TestData), MemberType =typeof(InternalHealthDamageTestData))] // sharing testdata amoung test classes and methods
+        //[MemberData(nameof(InternalHealthDamageTestData.TestData), MemberType = typeof(InternalHealthDamageTestData))] // sharing testdata amoung test classes and methods
         //public void TakeDamage(int damage, int expectedHealt)
         //{
 
@@ -251,9 +257,25 @@ namespace GameEngine.Tests
         //    Assert.Equal(expectedHealt, _sut.Health);
         //}
 
+        /// <summary>
+        /// Using  External file to get test data
+        /// </summary>
+        //[Theory]
+        //[MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))] // sharing testdata amoung test classes and methods from external Test Data.
+        //public void TakeDamage(int damage, int expectedHealt)
+        //{
 
+        //    _sut.TakeDamage(damage);
+
+        //    Assert.Equal(expectedHealt, _sut.Health);
+        //}
+
+        /// <summary>
+        /// Created custom data source attribute to get test data.
+        /// Created a class and inherited DataAttribute class in the xunit.sdk framework.
+        /// </summary>
         [Theory]
-        [MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))] // sharing testdata amoung test classes and methods from external Test Data.
+        [HealthDamageData]
         public void TakeDamage(int damage, int expectedHealt)
         {
 
@@ -261,7 +283,6 @@ namespace GameEngine.Tests
 
             Assert.Equal(expectedHealt, _sut.Health);
         }
-
 
         public void Dispose()
         {

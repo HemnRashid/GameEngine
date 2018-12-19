@@ -1,0 +1,39 @@
+﻿Properties of a Good Unit Test
+
+1. Atomic 
+2. Deterministic
+3. Repeatable
+4. Order Independent & Isolated
+5. Fast
+6. Easy to Setup
+
+
+
+
+So let's discuss for a minute the problems that test doubles help to solve. 
+To understand these problems, we first have to understand what defines a good unit test. 
+I've listed below six properties that help define a good unit test.
+I'm sure there are more, but these are five things I believe every unit test should implement.
+
+ - First, a unit test should be atomic. 
+
+This means that your unit test should test one small piece of functionality.
+When a unit test tests more than one thing, it becomes difficult to understand and maintain the test. 
+
+- Second, a unit test should be deterministic.
+
+This means that the unit test should always either pass or fail. A test should never be inconclusive.
+
+- Third, a unit test should be repeatable. 
+
+A test is repeatable when it passes consistently. If a test passes, and then fails without changing the test or any of the dependent code, then it is not repeatable. 
+
+- Fourth, a unit test should be order independent and isolated. 
+
+This means that your test should not need to be run in any specific order to pass, and that other tests or external forces should not affect your unit test's ability to pass. 
+
+- Fifth, a unit test should be fast, and when I say fast, I mean really fast. If a test takes 1 second to run, that's too slow. Tests should take just milliseconds to run. 
+
+- finally, a unit test should be easy to set up. 
+
+If you have to do a lot of coding just to get the test set up and ready to run, there should be a better way to do things.
