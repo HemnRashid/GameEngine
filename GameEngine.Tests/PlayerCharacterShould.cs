@@ -226,10 +226,48 @@ namespace GameEngine.Tests
             Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
         }
 
+
+        //// This is for using data driven test
+        //[Theory]
+        //[InlineData(0,100)] // indata , 0 is damage, 100 is ExpectedHealth
+        //[InlineData(1, 99)]
+        //[InlineData(50, 50)]
+        //[InlineData(101, 1)]
+        //public void TakeDamage(int damage,int expectedHealt)
+        //{
+
+        //    _sut.TakeDamage(damage);
+
+        //    Assert.Equal(expectedHealt,_sut.Health);
+        //}
+
+        //[Theory]
+        //[MemberData(nameof(InternalHealthDamageTestData.TestData), MemberType =typeof(InternalHealthDamageTestData))] // sharing testdata amoung test classes and methods
+        //public void TakeDamage(int damage, int expectedHealt)
+        //{
+
+        //    _sut.TakeDamage(damage);
+
+        //    Assert.Equal(expectedHealt, _sut.Health);
+        //}
+
+
+        [Theory]
+        [MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))] // sharing testdata amoung test classes and methods from external Test Data.
+        public void TakeDamage(int damage, int expectedHealt)
+        {
+
+            _sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealt, _sut.Health);
+        }
+
+
         public void Dispose()
         {
             _output.WriteLine($"Disposing PlayerCharachter { _sut.FullName}");
             //_sut.Dispose();
         }
+
     }
 }
